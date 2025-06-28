@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Financial Evolution Toolkit</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="logo.png" alt="Logo" class="navbar-logo me-2">
+                <!-- <span class="navbar-text">Financial Evolution Toolkit</span> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <li class="nav-item">
+                        <button class="nav-link nav-calc" data-calc="home">Home</button>
+                    </li> -->
+                    <li class="nav-item">
+                        <button class="nav-link nav-calc" data-calc="compound">Compound Interest</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link nav-calc" data-calc="investment">Investment Fees</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link nav-calc" data-calc="debt">Debt Free</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link nav-calc" data-calc="biweekly">Biweekly Payment</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dynamic Header Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-12">
+                    <h1 class="hero-title" id="dynamicTitle">The Financial Evolution Toolkit</h1>
+                    <p class="hero-subtitle" id="dynamicSubtitle">
+                        Unlock financial clarity in minutes — not months.<br>
+                        These calculators give you the answers most people pay advisors to figure out.
+                    </p>
+                    <div class="mt-5">
+                        <button class="btn btn-primary-custom btn-lg me-3" id="backToHome" style="display: none;">
+                            <i class="fas fa-arrow-left me-2"></i>
+                            Back to All Calculators
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Overview Cards -->
+    <section class="py-5" id="calculatorOverview">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="premium-card h-100 p-4 d-flex flex-column">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3 card-title-fixed">Compound Interest Calculator</h5>
+                        <p class="text-muted mb-auto flex-grow-1">See exactly how your money grows — and how to grow it faster.</p>
+                        <button class="btn btn-primary-custom btn-sm mt-3 launch-calc" data-calc="compound">
+                            Launch Calculator
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="premium-card h-100 p-4 d-flex flex-column">
+                        <div class="card-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3 card-title-fixed">Investment Fee Comparison</h5>
+                        <p class="text-muted mb-auto flex-grow-1">Stop guessing what fees are costing you — start taking control.</p>
+                        <button class="btn btn-primary-custom btn-sm mt-3 launch-calc" data-calc="investment">
+                            Launch Calculator
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="premium-card h-100 p-4 d-flex flex-column">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3 card-title-fixed">Debt-Free Date Calculator</h5>
+                        <p class="text-muted mb-auto flex-grow-1">Know your timeline to freedom — and how to shorten it.</p>
+                        <button class="btn btn-primary-custom btn-sm mt-3 launch-calc" data-calc="debt">
+                            Launch Calculator
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="premium-card h-100 p-4 d-flex flex-column">
+                        <div class="card-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3 card-title-fixed">Biweekly Payment Calculator</h5>
+                        <p class="text-muted mb-auto flex-grow-1">Convert monthly or annual payments into biweekly amounts that align with your pay schedule.</p>
+                        <button class="btn btn-primary-custom btn-sm mt-3 launch-calc" data-calc="biweekly">
+                            Launch Calculator
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Sections Container -->
+    <div id="calculatorSections" style="display: none;">
+    
+    <!-- Compound Interest Calculator -->
+    <section id="compound" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Compound Interest Calculator</h2>
+                <p class="section-subtitle">Discover the power of compound interest and regular investments</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="premium-card p-4">
+                        <form id="compoundForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Initial Amount ($)</label>
+                                    <input type="number" class="form-control" id="initialAmount" min="0" step="100" value="10000">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Annual Interest Rate (%)</label>
+                                    <input type="number" class="form-control" id="annualRate" min="0" max="30" step="0.1" value="7">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Monthly Contribution ($)</label>
+                                    <input type="number" class="form-control" id="monthlyContribution" min="0" step="50" value="500">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Number of Years</label>
+                                    <input type="number" class="form-control" id="years" min="1" max="50" value="20">
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary-custom">
+                                        <i class="fas fa-calculator me-2"></i>
+                                        Calculate Growth
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="compoundResults" class="mt-4" style="display: none;">
+                            <div class="row g-3">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="finalBalance">$0</div>
+                                        <div class="result-label">Final Balance</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value neutral" id="totalContributions">$0</div>
+                                        <div class="result-label">Total Contributions</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="interestEarned">$0</div>
+                                        <div class="result-label">Interest Earned</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value neutral" id="roi">0%</div>
+                                        <div class="result-label">Return on Investment</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container-mobile">
+                                <div class="chart-wrapper">
+                                    <canvas id="compoundChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Fee Comparison Calculator -->
+    <section id="investment" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Investment Fee Comparison</h2>
+                <p class="section-subtitle">Compare the long-term impact of investment fees on your portfolio</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="premium-card p-4">
+                        <form id="investmentForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Starting Amount ($)</label>
+                                    <input type="number" class="form-control" id="startingAmount" min="0" step="1000" value="50000">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Expected Annual Return (%)</label>
+                                    <input type="number" class="form-control" id="expectedReturn" min="0" max="20" step="0.1" value="8">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Monthly Contribution ($)</label>
+                                    <input type="number" class="form-control" id="monthlyContrib" min="0" step="50" value="500">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Investment Duration (Years)</label>
+                                    <input type="number" class="form-control" id="duration" min="1" max="50" value="25">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Self-Managed Fee (%)</label>
+                                    <input type="number" class="form-control" id="selfFee" min="0" max="5" step="0.01" value="0.15">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Advisor-Managed Fee (%)</label>
+                                    <input type="number" class="form-control" id="advisorFee" min="0" max="5" step="0.01" value="1.25">
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary-custom">
+                                        <i class="fas fa-chart-bar me-2"></i>
+                                        Compare Scenarios
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="investmentResults" class="mt-4" style="display: none;">
+                            <div class="row g-3">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="selfManagedValue">$0</div>
+                                        <div class="result-label">Self-Managed Value</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value neutral" id="advisorManagedValue">$0</div>
+                                        <div class="result-label">Advisor-Managed Value</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="feeDifference">$0</div>
+                                        <div class="result-label">Fee Difference</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value negative" id="extraFees">$0</div>
+                                        <div class="result-label">Extra Fees Paid</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container-mobile">
+                                <div class="chart-wrapper">
+                                    <canvas id="investmentChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Debt Free Calculator -->
+    <section id="debt" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Debt-Free Date Calculator</h2>
+                <p class="section-subtitle">Plan your path to financial freedom and see the impact of extra payments</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="premium-card p-4">
+                        <form id="debtForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Total Debt Amount ($)</label>
+                                    <input type="number" class="form-control" id="debtAmount" min="0" step="100" value="25000">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Annual Interest Rate (%)</label>
+                                    <input type="number" class="form-control" id="debtRate" min="0" max="30" step="0.1" value="18">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Minimum Monthly Payment ($)</label>
+                                    <input type="number" class="form-control" id="minPayment" min="0" step="50" value="500">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Extra Monthly Payment ($)</label>
+                                    <input type="number" class="form-control" id="extraPayment" min="0" step="50" value="100">
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary-custom">
+                                        <i class="fas fa-calendar-check me-2"></i>
+                                        Calculate Freedom Date
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="debtResults" class="mt-4" style="display: none;">
+                            <div class="row g-3">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="payoffTime">0 months</div>
+                                        <div class="result-label">Time to Pay Off</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value negative" id="totalInterest">$0</div>
+                                        <div class="result-label">Total Interest</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="interestSaved">$0</div>
+                                        <div class="result-label">Interest Saved</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="timeSaved">0 months</div>
+                                        <div class="result-label">Time Saved</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container-mobile">
+                                <div class="chart-wrapper">
+                                    <canvas id="debtChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biweekly Payment Calculator -->
+    <section id="biweekly" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Biweekly Payment Calculator</h2>
+                <p class="section-subtitle">Convert monthly or annual payments into biweekly amounts that align with your pay schedule</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="premium-card p-4">
+                        <div class="alert alert-info-custom mb-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Enter either a monthly OR annual amount (not both). The calculator will convert it to biweekly payments.
+                        </div>
+                        
+                        <form id="biweeklyForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Monthly Amount ($)</label>
+                                    <input type="number" class="form-control" id="monthlyAmount" min="0" step="10" placeholder="Enter monthly amount">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Annual Amount ($)</label>
+                                    <input type="number" class="form-control" id="annualAmount" min="0" step="100" placeholder="Enter annual amount">
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary-custom">
+                                        <i class="fas fa-coins me-2"></i>
+                                        Convert to Biweekly
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="biweeklyResults" class="mt-4" style="display: none;">
+                            <div class="row g-3 justify-content-center">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value positive" id="biweeklyAmount">$0</div>
+                                        <div class="result-label">Biweekly Payment</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="result-card">
+                                        <div class="result-value neutral" id="annualTotal">$0</div>
+                                        <div class="result-label">Annual Total</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    </div> <!-- End Calculator Sections Container -->
+
+    <!-- Footer -->
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="d-flex align-items-center">
+                        <img src="logo.png" alt="Logo" class="footer-logo me-3">
+                        <div>
+                            <h6 class="mb-1 footer-title">The Financial Evolution Toolkit</h6>
+                            <p class="mb-0 footer-subtitle">Professional-grade calculators for financial clarity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <p class="mb-0 footer-copyright">&copy; 2025 Your Financial Evolution. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="scripts.js"></script>
+</body>
+</html> 
